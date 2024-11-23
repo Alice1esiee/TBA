@@ -15,6 +15,7 @@ class Game:
         self.rooms = []
         self.commands = {}
         self.player = None
+        self.directions = None
     
     # Setup the game
     def setup(self):
@@ -30,32 +31,39 @@ class Game:
         
         # Setup rooms
 
-        forest = Room("Forest", "dans une forêt enchantée. Vous entendez une brise légère à travers la cime des arbres.")
-        self.rooms.append(forest)
-        tower = Room("Tower", "dans une immense tour en pierre qui s'élève au dessus des nuages.")
-        self.rooms.append(tower)
-        cave = Room("Cave", "dans une grotte profonde et sombre. Des voix semblent provenir des profondeurs.")
-        self.rooms.append(cave)
-        cottage = Room("Cottage", "dans un petit chalet pittoresque avec un toit de chaume. Une épaisse fumée verte sort de la cheminée.")
-        self.rooms.append(cottage)
-        swamp = Room("Swamp", "dans un marécage sombre et ténébreux. L'eau bouillonne, les abords sont vaseux.")
-        self.rooms.append(swamp)
-        castle = Room("Castle", "dans un énorme château fort avec des douves et un pont levis. Sur les tours, des flèches en or massif.")
-        self.rooms.append(castle)
+        aeroport = Room("Aeroport", "Le grand aéroport d'Italie, vous observez un individu qui étrangement vous intéresse")
+        self.rooms.append(aeroport)
+        tramway = Room("Tramway", "un tramway tout a fait banal")
+        self.rooms.append(tramway)
+        prison = Room("Prison", "la prison où réside Polpo, le chef local de l'association mafieuse Passione")
+        self.rooms.append(prison)
+        maison = Room("Maison", "un simple appartement, c'est là que vous vivez")
+        self.rooms.append(maison)
+        QG = Room("QG de l'unité", "un café partenaire de l'organisation, c'est là que vous vous réunissez")
+        self.rooms.append(QG)
+        centre_ville = Room("Centre Ville", "le coeur de la ville de Naples")
+        self.rooms.append(centre_ville)
+        eglise_abandonnee = Room("Eglise abandonnée", "TODO")   #TODO
+        self.rooms.append(eglise_abandonnee)
+        port_naples = Room("Port de Naples", "TODO") #TODO
+        self.rooms.append(port_naples)
 
         # Create exits for rooms
 
-        forest.exits = {"N" : cave, "E" : tower, "S" : castle, "O" : None}
-        tower.exits = {"N" : cottage, "E" : None, "S" : swamp, "O" : forest}
-        cave.exits = {"N" : None, "E" : cottage, "S" : forest, "O" : None}
-        cottage.exits = {"N" : None, "E" : None, "S" : tower, "O" : cave}
-        swamp.exits = {"N" : tower, "E" : None, "S" : None, "O" : castle}
-        castle.exits = {"N" : forest, "E" : swamp, "S" : None, "O" : None}
-
+        aeroport.exits = {"N" : tramway, "E" : None, "S" : None, "O" : None , "U" : None , "D" : tramway}
+        tramway.exits = {"N" : prison, "E" : QG, "S" : aeroport, "O" : None ,"U" : aeroport , "D" : None}
+        prison.exits = {"N" : None, "E" : None, "S" : tramway, "O" : None, "U" : None , "D" : None}
+        QG.exits = {"N" : None, "E" : None , "S" :None , "O" : tramway, "U" : None , "D" : None}
+        maison.exits = {"N" : None, "E" : None , "S" :None , "O" : None , "U" : None , "D" : None}
+        centre_ville.exits = {"N" : None, "E" : None , "S" :None , "O" : None, "U" : None , "D" : None}
+        eglise_abandonnee.exits = {"N" : None, "E" : None , "S" :None , "O" : None, "U" : port_naples , "D" : None}
+        port_naples.exits = {"N" : None, "E" : None , "S" :None , "O" : None, "U" : None , "D" : eglise_abandonnee}
+ 
+        self.directions = set(["N" , "NORD" , "E" , "EST" , "S" , "SUD" , "O" , "OUEST" , "U" , "UP" , "D" , "DOWN" ])
         # Setup player and starting room
 
         self.player = Player(input("\nEntrez votre nom: "))
-        self.player.current_room = swamp
+        self.player.current_room = aeroport
 
     # Play the game
     def play(self):
@@ -77,7 +85,8 @@ class Game:
 
         # If the command is not recognized, print an error message
         if command_word not in self.commands.keys():
-            print(f"\nCommande '{command_word}' non reconnue. Entrez 'help' pour voir la liste des commandes disponibles.\n")
+            #print(f"\nCommande '{command_word}' non reconnue. Entrez 'help' pour voir la liste des commandes disponibles.\n")
+            print('>')
         # If the command is recognized, execute it
         else:
             command = self.commands[command_word]
