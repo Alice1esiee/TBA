@@ -55,7 +55,12 @@ class Actions:
 
         # Get the direction from the list of words.
         direction = list_of_words[1]
+        direction = direction.upper()
+        if direction not in game.directions : 
+            print(f"\nDirection {direction} non reconnue")
+            return False
         # Move the player in the direction specified by the parameter.
+        direction = direction[0]
         player.move(direction)
         return True
 
