@@ -1,5 +1,22 @@
 # Define the Player class.
 class Player():
+    """
+    This class represents the player in our TBA game.
+    
+    Attributes:
+        name (str): the name that the player chose
+        current_room (room): The room that the player is in at the time
+
+    Methods:    
+        __init__(self, name): The constructor.
+        move(self, direction): Makes the move of the player from a room to an other and return True if this room exists or is available
+    
+        Examples:
+        
+    >>> joueur = player('joueur')
+    >>> joueur.move('N')
+    True
+    """
 
     # Define the constructor.
     def __init__(self, name):
