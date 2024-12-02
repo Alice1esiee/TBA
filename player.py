@@ -22,9 +22,10 @@ class Player():
     def __init__(self, name):
         self.name = name
         self.current_room = None
+        self.history = []
     
     # Define the move method.
-    def move(self, direction):
+    def move(self, direction,history):
         # Get the next room from the exits dictionary of the current room.
         next_room = self.current_room.exits[direction]
 
@@ -35,7 +36,9 @@ class Player():
         
         # Set the current room to the next room.
         self.current_room = next_room
+        self.history.append(self.current_room)
         print(self.current_room.get_long_description())
+        for i in range(len(history)):
+            print(history[i.get_long_description()])
+        print("")
         return True
-
-    

@@ -58,7 +58,6 @@ class Game:
         centre_ville.exits = {"N" : None, "E" : None , "S" :None , "O" : None, "U" : None , "D" : None}
         eglise_abandonnee.exits = {"N" : None, "E" : None , "S" :None , "O" : None, "U" : port_naples , "D" : None}
         port_naples.exits = {"N" : None, "E" : None , "S" :None , "O" : None, "U" : None , "D" : eglise_abandonnee}
- 
         self.directions = set(["N" , "NORD" , "E" , "EST" , "S" , "SUD" , "O" , "OUEST" , "U" , "UP" , "D" , "DOWN" ])
         # Setup player and starting room
 
@@ -76,7 +75,7 @@ class Game:
         return None
 
     # Process the command entered by the player
-    def process_command(self, command_string) -> None:
+    def process_command(self, command_string,history) -> None:
 
         # Split the command string into a list of words
         list_of_words = command_string.split(" ")
@@ -90,7 +89,7 @@ class Game:
         # If the command is recognized, execute it
         else:
             command = self.commands[command_word]
-            command.action(self, list_of_words, command.number_of_parameters)
+            command.action(self, list_of_words, command.number_of_parameters,history)
 
     # Print the welcome message
     def print_welcome(self):
