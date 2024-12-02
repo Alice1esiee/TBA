@@ -29,5 +29,3 @@ class Item:
     
     def __str__(self):
         return self.name + " : " + self.description + " (" + str(self.weight) + " kg)"
-    
-    

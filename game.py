@@ -6,6 +6,7 @@ from room import Room
 from player import Player
 from command import Command
 from actions import Actions
+from item import Item
 
 class Game:
 
@@ -28,11 +29,21 @@ class Game:
         self.commands["quit"] = quit
         go = Command("go", " <direction> : se déplacer dans une direction cardinale (N, E, S, O)", Actions.go, 1)
         self.commands["go"] = go
-        
+        history = Command("history"," : aficher l'historique des pièces visitées", Actions.history, 0)
+        self.commands["history"] = history
+        back = Command("back"," : retourner à la pièce précédente", Actions.back, 0)
+        self.commands["back"] = back
+        inventory = Command("inventory"," : afficher l'inventaire", Actions.inventory, 0)
+        self.commands["inventory"] = inventory
+        look = Command("look", ": voir les items dans la pièce", Actions.look, 0)
+        self.commands["look"] = look
+
+
         # Setup rooms
 
         aeroport = Room("Aeroport", "Le grand aéroport d'Italie, vous observez un individu qui étrangement vous intéresse")
         self.rooms.append(aeroport)
+        #aeroport.inventory.add(Item("shield", "bouclier", 4))
         tramway = Room("Tramway", "un tramway tout a fait banal")
         self.rooms.append(tramway)
         prison = Room("Prison", "la prison où réside Polpo, le chef local de l'association mafieuse Passione")
@@ -58,11 +69,18 @@ class Game:
         centre_ville.exits = {"N" : None, "E" : None , "S" :None , "O" : None, "U" : None , "D" : None}
         eglise_abandonnee.exits = {"N" : None, "E" : None , "S" :None , "O" : None, "U" : port_naples , "D" : None}
         port_naples.exits = {"N" : None, "E" : None , "S" :None , "O" : None, "U" : None , "D" : eglise_abandonnee}
+ 
         self.directions = set(["N" , "NORD" , "E" , "EST" , "S" , "SUD" , "O" , "OUEST" , "U" , "UP" , "D" , "DOWN" ])
         # Setup player and starting room
 
         self.player = Player(input("\nEntrez votre nom: "))
         self.player.current_room = aeroport
+
+        #setup inventory
+        self.player.inventory["sword"]=Item("sword", "epee",4)
+        
+
+
 
     # Play the game
     def play(self):
@@ -75,7 +93,7 @@ class Game:
         return None
 
     # Process the command entered by the player
-    def process_command(self, command_string,history) -> None:
+    def process_command(self, command_string) -> None:
 
         # Split the command string into a list of words
         list_of_words = command_string.split(" ")
@@ -89,7 +107,7 @@ class Game:
         # If the command is recognized, execute it
         else:
             command = self.commands[command_word]
-            command.action(self, list_of_words, command.number_of_parameters,history)
+            command.action(self, list_of_words, command.number_of_parameters)
 
     # Print the welcome message
     def print_welcome(self):
