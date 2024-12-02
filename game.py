@@ -7,6 +7,7 @@ from player import Player
 from command import Command
 from actions import Actions
 from item import Item
+from character import Character
 
 class Game:
 
@@ -84,6 +85,9 @@ class Game:
 
         #Setup player stat
         self.player.max_weight = 10
+
+        self.character = {Character("Gandalf", "un magicien blanc", aeroport, ["Abracadabra !"])}
+
         
 
 

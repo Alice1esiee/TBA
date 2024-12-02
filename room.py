@@ -44,6 +44,7 @@ class Room:
         self.description = description
         self.exits = {}
         self.inventory = set()
+        self.character = dict()
     
     # Define the get_exit method.
     def get_exit(self, direction):
