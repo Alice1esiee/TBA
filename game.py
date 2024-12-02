@@ -79,6 +79,7 @@ class Game:
 
         #setup inventory
         self.player.inventory["sword"]=Item("sword", "epee",4)
+        self.player.inventory["arc"] = Item("bow", "arc", 4)
         aeroport.inventory.add(Item("shield", "bouclier", 4))
 
         #Setup player stat

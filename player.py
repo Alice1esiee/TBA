@@ -24,7 +24,7 @@ class Player():
         self.current_room = None
         self.history = []
         self.inventory = {}
-        self.max_weight = 0
+        self.max_weight = 10
         
     
     # Define the move method.

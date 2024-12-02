@@ -213,8 +213,14 @@ class Actions:
             return False
         
         objet = list_of_words[1]
+        weight = 0
+        for key, value in game.player.inventory.items():
+            weight+=value.weight
         for elem in game.player.current_room.inventory:
             if elem.name.upper() == objet.upper():
+                if (weight+elem.weight>game.player.max_weight):
+                    print("L'objet {objet} ne peut être récupéré, la charge est trop élevée")
+                    return False
                 game.player.inventory[elem.name] = elem
                 game.player.current_room.inventory.remove(elem)
                 print(f"L'objet {objet} a été récupéré")
