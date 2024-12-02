@@ -219,7 +219,7 @@ class Actions:
         for elem in game.player.current_room.inventory:
             if elem.name.upper() == objet.upper():
                 if (weight+elem.weight>game.player.max_weight):
-                    print("L'objet {objet} ne peut être récupéré, la charge est trop élevée")
+                    print(f"L'objet {objet} ne peut être récupéré, la charge est trop élevée")
                     return False
                 game.player.inventory[elem.name] = elem
                 game.player.current_room.inventory.remove(elem)
