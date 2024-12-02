@@ -33,17 +33,18 @@ class Game:
         self.commands["history"] = history
         back = Command("back"," : retourner à la pièce précédente", Actions.back, 0)
         self.commands["back"] = back
-        inventory = Command("inventory"," : afficher l'inventaire", Actions.inventory, 0)
-        self.commands["inventory"] = inventory
+        check = Command("check"," : afficher l'inventaire", Actions.check, 0)
+        self.commands["check"] = check
         look = Command("look", ": voir les items dans la pièce", Actions.look, 0)
         self.commands["look"] = look
-
-
+        take = Command("take","prendre un objet de la pièce", Actions.take, 1)
+        self.commands["take"] = take
+        drop = Command("drop", "poser un objet de l'inventaire dans la pièce", Actions.drop,1)
+        self.commands["drop"] = drop
         # Setup rooms
 
         aeroport = Room("Aeroport", "Le grand aéroport d'Italie, vous observez un individu qui étrangement vous intéresse")
         self.rooms.append(aeroport)
-        #aeroport.inventory.add(Item("shield", "bouclier", 4))
         tramway = Room("Tramway", "un tramway tout a fait banal")
         self.rooms.append(tramway)
         prison = Room("Prison", "la prison où réside Polpo, le chef local de l'association mafieuse Passione")
@@ -78,6 +79,10 @@ class Game:
 
         #setup inventory
         self.player.inventory["sword"]=Item("sword", "epee",4)
+        aeroport.inventory.add(Item("shield", "bouclier", 4))
+
+        #Setup player stat
+        self.player.max_weight = 10
         
 
 
