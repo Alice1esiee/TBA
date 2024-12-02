@@ -144,6 +144,16 @@ class Actions:
         return True
     
     def history(game, list_of_words, number_of_parameters):
+        """
+        Prints the player's history
+
+        Args:
+            game (Game): The game object.
+            list_of_words (list): The list of words in the command.
+            number_of_parameters (int): The number of parameters expected by the command.
+        Returns:
+            bool: True if the command was executed successfully, False otherwise
+        """
         l = len(list_of_words)
         # If the number of parameters is incorrect, print an error message and return False.
         if l != number_of_parameters + 1:
@@ -171,7 +181,7 @@ class Actions:
             player.get_history()
             return True
     
-    def inventory(game, list_of_words, number_of_parameters):
+    def check(game, list_of_words, number_of_parameters):
         l = len(list_of_words)
         # If the number of parameters is incorrect, print an error message and return False.
         if l != number_of_parameters + 1:
@@ -190,7 +200,43 @@ class Actions:
             return False
         
         room = game.player.current_room
+        print(room.get_long_description())
         room.get_inventory()
-        room.get_long_description()
         return True
+    
+    def take(game, list_of_words, number_of_parameters):
+        l = len(list_of_words)
+        # If the number of parameters is incorrect, print an error message and return False.
+        if l != number_of_parameters + 1:
+            command_word = list_of_words[0]
+            print(MSG0.format(command_word=command_word))
+            return False
+        
+        objet = list_of_words[1]
+        for elem in game.player.current_room.inventory:
+            if elem.name.upper() == objet.upper():
+                game.player.inventory[elem.name] = elem
+                game.player.current_room.inventory.remove(elem)
+                print(f"L'objet {objet} a été récupéré")
+                return True
+        print(f"L'objet {objet} n'est pas présent dans cette salle")
+        return False
+    
+    def drop(game, list_of_words, number_of_parameters):
+        l = len(list_of_words)
+        # If the number of parameters is incorrect, print an error message and return False.
+        if l != number_of_parameters + 1:
+            command_word = list_of_words[0]
+            print(MSG0.format(command_word=command_word))
+            return False
+        
+        objet = list_of_words[1]
+        for key, value in game.player.inventory.items():
+            if key == objet:
+                game.player.current_room.inventory.add(game.player.inventory[objet])
+                del game.player.inventory[objet]
+                print(f"L'objet {objet} a été retiré de l'iventaire")
+                return True
+        print(f"L'objet {objet} n'est pas dans votre inventaire")
+        return False
         
