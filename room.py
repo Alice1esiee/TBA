@@ -73,7 +73,9 @@ class Room:
             print("Il n'y a rien ici.")
             return
         else:
-            print("La pièce contient :")
+            print("On voit :")
             for objet in self.inventory:
                 print("\t-", objet )
+            for pnj,values in self.character:
+                print("\t-", values )
             return

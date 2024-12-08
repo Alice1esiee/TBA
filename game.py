@@ -18,6 +18,7 @@ class Game:
         self.commands = {}
         self.player = None
         self.directions = None
+        self.character = {}
     
     # Setup the game
     def setup(self):
@@ -86,7 +87,7 @@ class Game:
         #Setup player stat
         self.player.max_weight = 10
 
-        self.character = {Character("Gandalf", "un magicien blanc", aeroport, ["Abracadabra !"])}
+        self.character["Gandalf"] = Character("Gandalf", "un magicien blanc", aeroport, ["Abracadabra !"])
 
         
 
