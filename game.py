@@ -87,7 +87,7 @@ class Game:
         #Setup player stat
         self.player.max_weight = 10
 
-        self.character["Gandalf"] = Character("Gandalf", "un magicien blanc", aeroport, ["Abracadabra !"])
+        self.character = {Character("Gandalf", "un magicien blanc", aeroport, ["Abracadabra !"])}
 
         
 

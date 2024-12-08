@@ -44,7 +44,7 @@ class Room:
         self.description = description
         self.exits = {}
         self.inventory = set()
-        self.character = dict()
+        self.characters = dict()
     
     # Define the get_exit method.
     def get_exit(self, direction):
@@ -76,6 +76,4 @@ class Room:
             print("On voit :")
             for objet in self.inventory:
                 print("\t-", objet )
-            for pnj,values in self.character:
-                print("\t-", values )
             return
