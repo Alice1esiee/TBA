@@ -6,7 +6,7 @@ class Room:
 
     Attributes:
         name (str): The name of the room.
-        description (str): The description of what the room contains/looks like.
+        descrition (str): The description of what the room contains/looks like.
         exits (dict): The different possible exits that the player can take in the form of key = direction (str) and value=room (room)
     
     Methods:
@@ -39,7 +39,7 @@ class Room:
     """
 
     # Define the constructor. 
-    def __init__(self, name, description):
+    def __init__(self, name, description): #ajouter parameter TODO
         self.name = name
         self.description = description
         self.exits = {}
@@ -76,4 +76,6 @@ class Room:
             print("On voit :")
             for objet in self.inventory:
                 print("\t-", objet )
+            for pnj in self.characters:
+                print("\t-", self.characters[pnj])
             return

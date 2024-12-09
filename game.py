@@ -1,3 +1,4 @@
+
 # Description: Game class
 
 # Import modules
@@ -9,8 +10,6 @@ from actions import Actions
 from item import Item
 from character import Character
 
-DEBUG = False
-
 class Game:
 
     # Constructor
@@ -20,7 +19,6 @@ class Game:
         self.commands = {}
         self.player = None
         self.directions = None
-        self.character = {}
     
     # Setup the game
     def setup(self):
@@ -84,12 +82,16 @@ class Game:
         #setup inventory
         self.player.inventory["sword"]=Item("sword", "epee",4)
         self.player.inventory["bow"] = Item("bow", "arc", 4)
-        aeroport.inventory.add(Item("shield", "un bouclier léger et résistant", 1))
+        aeroport.inventory.add(Item("shield", "bouclier", 4))
 
         #Setup player stat
         self.player.max_weight = 10
 
-        aeroport.inventory.add(Character("Gandalf", "un magicien blanc", aeroport, ["Abracadabra !"]))
+        #setup PNJ
+        aeroport.characters["Gandalf"] = Character("Gandalf","sorcerer", aeroport, ["tkt"])
+        
+
+
 
     # Play the game
     def play(self):
