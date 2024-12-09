@@ -9,6 +9,8 @@ from actions import Actions
 from item import Item
 from character import Character
 
+DEBUG = False
+
 class Game:
 
     # Constructor
@@ -82,16 +84,12 @@ class Game:
         #setup inventory
         self.player.inventory["sword"]=Item("sword", "epee",4)
         self.player.inventory["bow"] = Item("bow", "arc", 4)
-        aeroport.inventory.add(Item("shield", "bouclier", 4))
+        aeroport.inventory.add(Item("shield", "un bouclier léger et résistant", 1))
 
         #Setup player stat
         self.player.max_weight = 10
 
-        self.character = {Character("Gandalf", "un magicien blanc", aeroport, ["Abracadabra !"])}
-
-        
-
-
+        aeroport.inventory.add(Character("Gandalf", "un magicien blanc", aeroport, ["Abracadabra !"]))
 
     # Play the game
     def play(self):

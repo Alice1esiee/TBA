@@ -6,7 +6,7 @@ class Room:
 
     Attributes:
         name (str): The name of the room.
-        descrition (str): The description of what the room contains/looks like.
+        description (str): The description of what the room contains/looks like.
         exits (dict): The different possible exits that the player can take in the form of key = direction (str) and value=room (room)
     
     Methods:
