@@ -7,6 +7,8 @@ class Character:
         self.description = description
         self.current_room = current_room
         self.msgs = msgs
+        self.list_msgs = []
+
     
     def __str__(self):
         return self.name + " : " + self.description
@@ -27,4 +29,12 @@ class Character:
             self.current_room = next_room
             self.current_room.characters[self.name]=self
             print(f"{self.name} went to {self.current_room.name}\n")
-        
+    
+    def get_msg(self):
+        if self.msgs:
+            if not self.list_msgs:
+                for i in self.msgs:
+                    self.list_msgs.append(i)
+            print(self.list_msgs.pop(0))
+        else:
+            print(f"{self.name} n'a rien à dire.")

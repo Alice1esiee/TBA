@@ -259,4 +259,20 @@ class Actions:
                 return True
         print(f"L'objet {objet} n'est pas dans votre inventaire")
         return False
+    
+    def talk(game, list_of_words,number_of_parameters):
+        l = len(list_of_words)
+        # If the number of parameters is incorrect, print an error message and return False.
+        if l != number_of_parameters + 1:
+            command_word = list_of_words[0]
+            print(MSG0.format(command_word=command_word))
+            return False
+    
+        person = list_of_words[1]
+        for key,value in game.player.current_room.characters.items():
+            if key.upper() == person.upper():
+                value.get_msg()
+                return True
+        print(f"{person} n'est pas dans la salle")
+        return False
         

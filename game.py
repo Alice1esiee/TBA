@@ -42,6 +42,8 @@ class Game:
         self.commands["take"] = take
         drop = Command("drop", "poser un objet de l'inventaire dans la pièce", Actions.drop,1)
         self.commands["drop"] = drop
+        self.talk = Command("talk", "parler à un personnage", Actions.talk, 1)
+        self.commands["talk"] = self.talk
         # Setup rooms
 
         aeroport = Room("Aeroport", "Le grand aéroport d'Italie, vous observez un individu qui étrangement vous intéresse")
