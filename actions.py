@@ -44,7 +44,21 @@ class Actions:
         False
 
         """
+        liste_pers = [] #liste pleine des persos a deplacer
+        for salle in game.rooms:
+            if salle.characters:
+                for key, value in salle.characters.items():
+                    liste_pers.append(salle.characters[key])
+                    #faire comme en dessous
         
+        for pnj in liste_pers:
+            if pnj is not None:
+                pnj.move()
+        #
+        #pnj = game.player.current_room.characters.get("Gandalf", None)
+        #if pnj is not None :
+            #pnj.move()
+        #
         player = game.player
         l = len(list_of_words)
         # If the number of parameters is incorrect, print an error message and return False.

@@ -69,13 +69,20 @@ class Room:
         return f"\nVous êtes dans {self.description}\n\n{self.get_exit_string()}\n"
 
     def get_inventory(self):
+        pnj = True
+        obj = True
         if len(self.inventory)==0:
-            print("Il n'y a rien ici.")
-            return
+            obj = False
+        if not self.characters:
+            pnj = False
+
+
+        if not( pnj or obj):
+            print("Il n'y a rien ici")
         else:
             print("On voit :")
             for objet in self.inventory:
-                print("\t-", objet )
+                    print("\t-", objet )
             for pnj in self.characters:
                 print("\t-", self.characters[pnj])
-            return
+        return

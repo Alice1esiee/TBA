@@ -10,13 +10,21 @@ class Character:
     
     def __str__(self):
         return self.name + " : " + self.description
-    
+        
     def move(self):
-        liste = ["aeroport","tramway","prison","QG","maison","centre_ville","eglise_abandonnee","port_naples"]
-        room = random.choice(liste)
-        if room in self.current_room :
-            room.inventory.add(Character)
-            room.inventory.remove(Character)
-            return True
-        else :
+        l=["move", "stay"]
+        condition = random.choice(l)
+        print(f"{condition}\n")
+        if (condition == "stay"):
             return False
+        else:
+            salles_adj = []
+            for salle in self.current_room.exits.values():
+                if salle is not None:
+                    salles_adj.append(salle)
+            next_room = random.choice(salles_adj)
+            del self.current_room.characters[self.name]
+            self.current_room = next_room
+            self.current_room.characters[self.name]=self
+            print(f"{self.name} went to {self.current_room.name}\n")
+        
