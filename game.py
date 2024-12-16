@@ -89,7 +89,7 @@ class Game:
         self.player.max_weight = 10
 
         #setup PNJ
-        aeroport.characters["Gandalf"] = Character("Gandalf","sorcerer", aeroport, ["tkt"])
+        aeroport.characters["Gandalf"] = Character("Gandalf","sorcerer", aeroport, ["je suis Gandalf !","coucou","ca va"])
         
 
 
