@@ -1,5 +1,6 @@
 # Define the Character class.
 import random
+
 class Character:
     
     def __init__(self,name,description,current_room,msgs):
@@ -14,9 +15,11 @@ class Character:
         return self.name + " : " + self.description
         
     def move(self):
+        from game import DEBUG
         l=["move", "stay"]
         condition = random.choice(l)
-        print(f"{condition}\n")
+        if DEBUG:
+            print(f"{condition}\n")
         if (condition == "stay"):
             return False
         else:
@@ -28,7 +31,8 @@ class Character:
             del self.current_room.characters[self.name]
             self.current_room = next_room
             self.current_room.characters[self.name]=self
-            print(f"{self.name} went to {self.current_room.name}\n")
+            if DEBUG:
+                print(f"{self.name} went to {self.current_room.name}\n")
     
     def get_msg(self):
         if self.msgs:

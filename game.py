@@ -9,6 +9,8 @@ from actions import Actions
 from item import Item
 from character import Character
 
+DEBUG = True
+
 class Game:
 
     # Constructor
