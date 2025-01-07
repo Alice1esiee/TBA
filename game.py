@@ -48,21 +48,21 @@ class Game:
         self.commands["talk"] = self.talk
         # Setup rooms
 
-        aeroport = Room("Aeroport", "Le grand aéroport d'Italie, vous observez un individu qui étrangement vous intéresse")
+        aeroport = Room("Aéroport de Naples", "Un lieu de passage, où l'agitation des voyageurs se mêle à l'ombre du Vésuve.")
         self.rooms.append(aeroport)
-        tramway = Room("Tramway", "un tramway tout a fait banal")
+        tramway = Room("Tramway de Naples", "Un serpent d'acier qui serpente à travers les rues animées, un mélange chaotique de klaxons et de conversations.")
         self.rooms.append(tramway)
-        prison = Room("Prison", "la prison où réside Polpo, le chef local de l'association mafieuse Passione")
+        prison = Room("Prison de Naples", "Un bâtiment massif et sombre, chargé de l'odeur de la désolation et de la tristesse.")
         self.rooms.append(prison)
-        maison = Room("Maison", "un simple appartement, c'est là que vous vivez")
+        maison = Room("Maison", "Un petit appartement modeste, avec des murs jaunes et une cour intérieure verdoyante.")
         self.rooms.append(maison)
-        QG = Room("QG de l'unité", "un café partenaire de l'organisation, c'est là que vous vous réunissez")
+        QG = Room("QG de l'unité", "Un café discret et élégant, avec un air de mystère. Derrière son ambiance chaleureuse se cache une organisation puissante.")
         self.rooms.append(QG)
-        centre_ville = Room("Centre Ville", "le coeur de la ville de Naples")
+        centre_ville = Room("Centre-ville de Naples", "Un labyrinthe de ruelles étroites et colorées, avec des boutiques artisanales et des restaurants traditionnels.")
         self.rooms.append(centre_ville)
-        eglise_abandonnee = Room("Eglise abandonnée", "TODO")   #TODO
+        eglise_abandonnee = Room("Église abandonnée", "Un bâtiment religieux délabré, sombre et poussiéreux, avec des bancs en bois pourris et des statues brisées.")
         self.rooms.append(eglise_abandonnee)
-        port_naples = Room("Port de Naples", "TODO") #TODO
+        port_naples = Room("Port de Naples", "Un havre de paix pour les pêcheurs, où le parfum de la mer se mêle à l'odeur du poisson frais.") 
         self.rooms.append(port_naples)
 
         # Create exits for rooms
