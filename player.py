@@ -25,6 +25,7 @@ class Player():
         self.history = []
         self.inventory = {}
         self.max_weight = 10
+        self.alive = True # pour condition de fin
         
     
     # Define the move method.

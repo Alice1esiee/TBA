@@ -15,7 +15,6 @@
 MSG0 = "\nLa commande '{command_word}' ne prend pas de paramètre.\n"
 # The MSG1 variable is used when the command takes 1 parameter.
 MSG1 = "\nLa commande '{command_word}' prend 1 seul paramètre.\n"
-
 class Actions:
 
     def go(game, list_of_words, number_of_parameters):
@@ -76,6 +75,9 @@ class Actions:
         # Move the player in the direction specified by the parameter.
         direction = direction[0]
         player.move(direction)
+
+        
+        game.win()
         return True
 
     def quit(game, list_of_words, number_of_parameters):
@@ -275,4 +277,31 @@ class Actions:
                 return True
         print(f"{person} n'est pas dans la salle")
         return False
+    
+    def fight(game, list_of_words, number_of_parameters):
+        l = len(list_of_words)
+        # If the number of parameters is incorrect, print an error message and return False.
+        if l != number_of_parameters + 1:
+            command_word = list_of_words[0]
+            print(MSG0.format(command_word=command_word))
+            return False
+        
+        ennemy = "dont know yet"
+        for nom, perso in game.player.current_room.characters.items():
+            if list_of_words[1] == nom:
+                ennemy = list_of_words[1]
+        if ennemy == "dont know yet":
+            print(f"{list_of_words[1]} n'est pas dans la salle")
+            return False                
+        
+        if game.weakness_fight[ennemy] in game.player.inventory.values():
+            del game.player.current_room.characters[ennemy]
+            print(f"congratulations, you won your fight against {ennemy}")
+            return True
+        else :
+            print("you lost, you dont have the required item to win")
+            game.player.alive = False
+            game.loss()
+            return False
+        
         

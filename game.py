@@ -10,7 +10,7 @@ from item import Item
 from character import Character
 
 DEBUG = True
-
+win_room = "Port de Naples"
 class Game:
 
     # Constructor
@@ -20,7 +20,7 @@ class Game:
         self.commands = {}
         self.player = None
         self.directions = None
-
+        self.weakness_fight = dict()
     # Setup the game
     def setup(self):
 
@@ -48,6 +48,8 @@ class Game:
         self.commands["drop"] = drop
         self.talk = Command("talk", "parler à un personnage", Actions.talk, 1)
         self.commands["talk"] = self.talk
+        fight = Command("fight"," engager un combat avec le PNJ/ennemi choisit", Actions.fight , 1)
+        self.commands["fight"] = fight
         # Setup rooms
 
         aeroport = Room("Aéroport de Naples",
@@ -125,10 +127,12 @@ class Game:
         self.player.current_room = aeroport
 
         #setup inventory
-        self.player.inventory["sword"]=Item("sword", "epee",4)
-        self.player.inventory["bow"] = Item("bow", "arc", 4)
-        aeroport.inventory.add(Item("shield", "bouclier", 4))
-
+        sword = Item("sword", "epee",4)
+        self.player.inventory["sword"]=sword
+        bow = Item("bow", "arc", 4)
+        self.player.inventory["bow"] = bow
+        shield = Item("shield", "bouclier", 4)
+        aeroport.inventory.add(shield)
         #Setup player stat
         self.player.max_weight = 10
 
@@ -144,7 +148,9 @@ class Game:
                                                  "Je suis là pour t'aider.",
                                                 "Tu dois trouver le mystérieux fleuret pour vaincre le Boss de Passione."])
 
-
+        aeroport.characters["Gandalf"] = Character("Gandalf","sorcerer", aeroport, ["je suis Gandalf !","coucou","ca va"])
+        #pnj weakness
+        self.weakness_fight["Gandalf"] = shield
     # Play the game
     def play(self):
         self.setup()
@@ -155,6 +161,14 @@ class Game:
             self.process_command(input("> "))
         return None
 
+    def win(self):
+        if self.player.current_room.name == win_room:
+            self.finished = True
+            print("congratulations you beated the game")
+    def loss(self):
+        if self.player.alive == False:
+            self.finished = True
+            print("you lost... try again later") 
     # Process the command entered by the player
     def process_command(self, command_string) -> None:
 
