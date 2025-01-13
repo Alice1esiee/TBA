@@ -8,8 +8,7 @@ class Character:
         self.description = description
         self.current_room = current_room
         self.msgs = msgs
-        self.list_msgs = []
-
+        self.list_msgs = []        
     
     def __str__(self):
         return self.name + " : " + self.description

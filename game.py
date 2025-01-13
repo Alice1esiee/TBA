@@ -94,17 +94,28 @@ class Game:
 
         # Create exits for rooms
 
-        aeroport.exits = {"N" : None, "E" : None, "S" : tramway, "O" : None , "U" : None , "D" : None}
-        tramway.exits = {"N" : None, "E" : prison, "S" : centre_ville, "O" : None ,"U" : None , "D" : None}
-        prison.exits = {"N" : None, "E" : None, "S" : eglise_abandonnee, "O" : tramway ,"U" : None , "D" : None}
-        QG.exits = {"N" : None, "E" : port_naples, "S" : None, "O" : None ,"U" : None , "D" : None}
-        maison.exits = {"N" : None, "E" : centre_ville, "S" : None, "O" : None ,"U" : None , "D" : None}
-        centre_ville.exits = {"N" : tramway, "E" : eglise_abandonnee, "S" : port_naples, "O" : maison ,"U" : None , "D" : None}
-        eglise_abandonnee.exits = {"N" : prison, "E" : None, "S" : None, "O" : centre_ville ,"U" : etage_un , "D" : sous_sol}
-        port_naples.exits = {"N" : centre_ville, "E" : None, "S" : None, "O" : QG ,"U" : None , "D" : None}
-        sous_sol.exits = {"N" : None, "E" : None, "S" : None, "O" : None ,"U" : eglise_abandonnee , "D" : None}
-        etage_un.exits = {"N" : None, "E" : None, "S" : None, "O" : None ,"U" : etage_boss , "D" : eglise_abandonnee}
-        etage_boss.exits = {"N" : None, "E" : None, "S" : None, "O" : None ,"U" : None , "D" : etage_un}
+        aeroport.exits = {"N" : None, "E" : None, "S" : tramway, "O" : None ,
+                           "U" : None , "D" : None}
+        tramway.exits = {"N" : None, "E" : prison, "S" : centre_ville, "O" : None ,
+                         "U" : None , "D" : None}
+        prison.exits = {"N" : None, "E" : None, "S" : eglise_abandonnee, "O" : tramway ,
+                        "U" : None , "D" : None}
+        QG.exits = {"N" : None, "E" : port_naples, "S" : None, "O" : None ,
+                    "U" : None , "D" : None}
+        maison.exits = {"N" : None, "E" : centre_ville, "S" : None, "O" : None ,
+                        "U" : None , "D" : None}
+        centre_ville.exits = {"N" : tramway, "E" : eglise_abandonnee, "S" : port_naples,
+                               "O" : maison ,"U" : None , "D" : None}
+        eglise_abandonnee.exits = {"N" : prison, "E" : None, "S" : None, 
+                                   "O" : centre_ville ,"U" : etage_un , "D" : sous_sol}
+        port_naples.exits = {"N" : centre_ville, "E" : None, "S" : None, 
+                             "O" : QG ,"U" : None , "D" : None}
+        sous_sol.exits = {"N" : None, "E" : None, "S" : None, "O" : None ,
+                          "U" : eglise_abandonnee , "D" : None}
+        etage_un.exits = {"N" : None, "E" : None, "S" : None, "O" : None ,
+                          "U" : etage_boss , "D" : eglise_abandonnee}
+        etage_boss.exits = {"N" : None, "E" : None, "S" : None, "O" : None ,
+                            "U" : None , "D" : etage_un}
         
  
         self.directions = set(["N" , "NORD" , "E" , "EST" , "S" , "SUD" , "O" , "OUEST" , "U" , "UP" , "D" , "DOWN" ])
@@ -128,8 +139,8 @@ class Game:
         sous_sol.characters["Doppio"] = Character("Doppio", "Sbire du Boss",
                                                    sous_sol, ["Tu ne peux pas me battre !",
                                                     "Tu ne toucheras pas au Boss.","Pars !"])
-        centre_ville["Polnareff"] = Character("Polnareff", "Allie", centre_ville,
-                                               ["Je suis ton allie.",
+        centre_ville.characters["Polnareff"] = Character("Polnareff", "Allie",
+                                              centre_ville, ["Je suis ton allie.",
                                                  "Je suis là pour t'aider.",
                                                 "Tu dois trouver le mystérieux fleuret pour vaincre le Boss de Passione."])
 
