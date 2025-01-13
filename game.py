@@ -20,7 +20,7 @@ class Game:
         self.commands = {}
         self.player = None
         self.directions = None
-    
+
     # Setup the game
     def setup(self):
 
@@ -30,9 +30,11 @@ class Game:
         self.commands["help"] = help
         quit = Command("quit", " : quitter le jeu", Actions.quit, 0)
         self.commands["quit"] = quit
-        go = Command("go", " <direction> : se déplacer dans une direction cardinale (N, E, S, O)", Actions.go, 1)
+        go = Command("go", " <direction> : se déplacer dans une direction cardinale (N, E, S, O)",
+                      Actions.go, 1)
         self.commands["go"] = go
-        history = Command("history"," : aficher l'historique des pièces visitées", Actions.history, 0)
+        history = Command("history"," : aficher l'historique des pièces visitées",
+                           Actions.history, 0)
         self.commands["history"] = history
         back = Command("back"," : retourner à la pièce précédente", Actions.back, 0)
         self.commands["back"] = back
@@ -48,33 +50,62 @@ class Game:
         self.commands["talk"] = self.talk
         # Setup rooms
 
-        aeroport = Room("Aéroport de Naples", "Un lieu de passage, où l'agitation des voyageurs se mêle à l'ombre du Vésuve.")
+        aeroport = Room("Aéroport de Naples",
+                        "Un lieu de passage, où l'agitation des voyageurs"\
+                        " se mêle à l'ombre du Vésuve.")
         self.rooms.append(aeroport)
-        tramway = Room("Tramway de Naples", "Un serpent d'acier qui serpente à travers les rues animées, un mélange chaotique de klaxons et de conversations.")
+        tramway = Room("Tramway de Naples",
+                        "Un serpent d'acier qui serpente à travers les rues animées,"\
+                        " un mélange chaotique de klaxons et de conversations.")
         self.rooms.append(tramway)
-        prison = Room("Prison de Naples", "Un bâtiment massif et sombre, chargé de l'odeur de la désolation et de la tristesse.")
+        prison = Room("Prison de Naples",
+                    "Un bâtiment massif et sombre, chargé de l'odeur de la"\
+                    " désolation et de la tristesse.")
         self.rooms.append(prison)
-        maison = Room("Maison", "Un petit appartement modeste, avec des murs jaunes et une cour intérieure verdoyante.")
+        maison = Room("Maison",
+                       "Un petit appartement modeste, avec des murs jaunes "\
+                        "et une cour intérieure verdoyante.")
         self.rooms.append(maison)
-        QG = Room("QG de l'unité", "Un café discret et élégant, avec un air de mystère. Derrière son ambiance chaleureuse se cache une organisation puissante.")
+        QG = Room("QG de l'unité",
+                   "Un café discret et élégant, avec un air de mystère. "\
+                    "Derrière son ambiance chaleureuse se cache une organisation puissante.")
         self.rooms.append(QG)
-        centre_ville = Room("Centre-ville de Naples", "Un labyrinthe de ruelles étroites et colorées, avec des boutiques artisanales et des restaurants traditionnels.")
+        centre_ville = Room("Centre-ville de Naples",
+                            "Un labyrinthe de ruelles étroites et colorées, "\
+                            "avec des boutiques artisanales et des restaurants traditionnels.")
         self.rooms.append(centre_ville)
-        eglise_abandonnee = Room("Église abandonnée", "Un bâtiment religieux délabré, sombre et poussiéreux, avec des bancs en bois pourris et des statues brisées.")
+        eglise_abandonnee = Room("Église abandonnée",
+                                "Un bâtiment religieux délabré, sombre et poussiéreux,"\
+                                " avec des bancs en bois pourris et des statues brisées.")
         self.rooms.append(eglise_abandonnee)
-        port_naples = Room("Port de Naples", "Un havre de paix pour les pêcheurs, où le parfum de la mer se mêle à l'odeur du poisson frais.") 
+        port_naples = Room("Port de Naples",
+                            "Un havre de paix pour les pêcheurs, où le parfum de "\
+                            "la mer se mêle à l'odeur du poisson frais.") 
         self.rooms.append(port_naples)
+        sous_sol = Room("Sous sol de l'église",
+                         "description")
+        self.rooms.append(sous_sol)
+        etage_un = Room("1er etage",
+                         "description")
+        self.rooms.append(etage_un)
+        etage_boss = Room("Etage Boss",
+                           "description")
+        self.rooms.append(etage_boss)
 
         # Create exits for rooms
 
-        aeroport.exits = {"N" : tramway, "E" : None, "S" : None, "O" : None , "U" : None , "D" : tramway}
-        tramway.exits = {"N" : prison, "E" : QG, "S" : aeroport, "O" : None ,"U" : aeroport , "D" : None}
-        prison.exits = {"N" : None, "E" : None, "S" : tramway, "O" : None, "U" : None , "D" : None}
-        QG.exits = {"N" : None, "E" : None , "S" :None , "O" : tramway, "U" : None , "D" : None}
-        maison.exits = {"N" : None, "E" : None , "S" :None , "O" : None , "U" : None , "D" : None}
-        centre_ville.exits = {"N" : None, "E" : None , "S" :None , "O" : None, "U" : None , "D" : None}
-        eglise_abandonnee.exits = {"N" : None, "E" : None , "S" :None , "O" : None, "U" : port_naples , "D" : None}
-        port_naples.exits = {"N" : None, "E" : None , "S" :None , "O" : None, "U" : None , "D" : eglise_abandonnee}
+        aeroport.exits = {"N" : None, "E" : None, "S" : tramway, "O" : None , "U" : None , "D" : None}
+        tramway.exits = {"N" : None, "E" : prison, "S" : centre_ville, "O" : None ,"U" : None , "D" : None}
+        prison.exits = {"N" : None, "E" : None, "S" : eglise_abandonnee, "O" : tramway ,"U" : None , "D" : None}
+        QG.exits = {"N" : None, "E" : port_naples, "S" : None, "O" : None ,"U" : None , "D" : None}
+        maison.exits = {"N" : None, "E" : centre_ville, "S" : None, "O" : None ,"U" : None , "D" : None}
+        centre_ville.exits = {"N" : tramway, "E" : eglise_abandonnee, "S" : port_naples, "O" : maison ,"U" : None , "D" : None}
+        eglise_abandonnee.exits = {"N" : prison, "E" : None, "S" : None, "O" : centre_ville ,"U" : etage_un , "D" : sous_sol}
+        port_naples.exits = {"N" : centre_ville, "E" : None, "S" : None, "O" : QG ,"U" : None , "D" : None}
+        sous_sol.exits = {"N" : None, "E" : None, "S" : None, "O" : None ,"U" : eglise_abandonnee , "D" : None}
+        etage_un.exits = {"N" : None, "E" : None, "S" : None, "O" : None ,"U" : etage_boss , "D" : eglise_abandonnee}
+        etage_boss.exits = {"N" : None, "E" : None, "S" : None, "O" : None ,"U" : None , "D" : etage_un}
+        
  
         self.directions = set(["N" , "NORD" , "E" , "EST" , "S" , "SUD" , "O" , "OUEST" , "U" , "UP" , "D" , "DOWN" ])
         # Setup player and starting room
@@ -91,9 +122,16 @@ class Game:
         self.player.max_weight = 10
 
         #setup PNJ
-        aeroport.characters["Gandalf"] = Character("Gandalf","sorcerer", aeroport, ["je suis Gandalf !","coucou","ca va"])
-        
-
+        etage_boss.characters["Diavolo"] = Character("Diavolo","Boss", 
+                                                    etage_boss, ["Je suis le Boss de Passione !"
+                                                    ,"Viens te battre !","Je suis invincible."])
+        sous_sol.characters["Doppio"] = Character("Doppio", "Sbire du Boss",
+                                                   sous_sol, ["Tu ne peux pas me battre !",
+                                                    "Tu ne toucheras pas au Boss.","Pars !"])
+        centre_ville["Polnareff"] = Character("Polnareff", "Allie", centre_ville,
+                                               ["Je suis ton allie.",
+                                                 "Je suis là pour t'aider.",
+                                                "Tu dois trouver le mystérieux fleuret pour vaincre le Boss de Passione."])
 
 
     # Play the game
