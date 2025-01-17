@@ -54,7 +54,8 @@ class Actions:
             if pnj.name == "Diavolo": 
                 pass
             elif pnj is not None:
-                pnj.move()
+                #pnj.move()
+                pass
         #
         #pnj = game.player.current_room.characters.get("Gandalf", None)
         #if pnj is not None :
