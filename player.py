@@ -1,4 +1,6 @@
-# Define the Player class.
+"""
+class to modelise the player and its way to work its way around
+"""
 class Player():
     """
     This class represents the player in our TBA game.
@@ -9,7 +11,8 @@ class Player():
 
     Methods:    
         __init__(self, name): The constructor.
-        move(self, direction): Makes the move of the player from a room to an other and return True if this room exists or is available
+        move(self, direction): Makes the move of the player 
+        from a room to an other and return True if this room exists or is available
     
         Examples:
         
@@ -26,10 +29,18 @@ class Player():
         self.inventory = {}
         self.max_weight = 10
         self.alive = True # pour condition de fin
-        
-    
+
     # Define the move method.
     def move(self, direction):
+        """
+        Makes the player move a direction
+
+        Args : 
+            self
+            direction (str)
+        Returns : 
+            True or False depending on if the can be done
+        """
         # Get the next room from the exits dictionary of the current room.
         next_room = self.current_room.exits[direction]
 
@@ -37,7 +48,7 @@ class Player():
         if next_room is None:
             print("\nAucune porte dans cette direction !\n")
             return False
-        
+
         # Set the current room to the next room.
         self.history.append(self.current_room)
         self.current_room = next_room
@@ -46,6 +57,13 @@ class Player():
         return True
 
     def get_history(self):
+        """
+        Prints the player's previous room history
+
+        Args : 
+            self
+        Return
+        """
         print("Vous avez visité :\n")
         if len(self.history) == 0:
             print("pas de pièce précédente \n")
@@ -53,16 +71,13 @@ class Player():
         for i in range (len(self.history)):
             print("\t- "+ self.history[i].description)
         return
-    
+
     def get_inventory(self):
-        
+
         if len(self.inventory)==0:
             print("Votre inventaire est vide.")
             return
-        else:
-            print("Vous disposez des items suivants :")
-            for cle,valeur in self.inventory.items():
-                print("\t-", valeur)
-            return
-
-    
+        print("Vous disposez des items suivants :")
+        for valeur in self.inventory.values():
+            print("\t-", valeur)
+        return

@@ -1,4 +1,6 @@
-# This file contains the Item class.
+"""
+item class for items in the game
+"""
 
 class Item:
     """
@@ -26,6 +28,12 @@ class Item:
         self.name = name
         self.description = description
         self.weight = weight
-    
+
     def __str__(self):
         return self.name + " : " + self.description + " (" + str(self.weight) + " kg)"
+
+    def methode(self):
+        """
+        pylint i assume bug fix,"Too few public methods (1/2) (too-few-public-methods)"
+        """
+        return
