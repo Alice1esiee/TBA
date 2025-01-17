@@ -159,11 +159,11 @@ class Game:
         sous_sol.characters["Doppio"] = Character("Doppio", "Sbire du Boss",
                                                    sous_sol, ["Tu ne peux pas me battre !",
                                                     "Tu ne toucheras pas au Boss.","Pars !"])
-        tramway.characters["Polnareff"] =  Character("Polnareff", "Allie",
-                                            tramway, ["\nTu es venu ici pour affronter"
+        centre_ville.characters["Polnareff"] =  Character("Polnareff", "Allie",
+                                            centre_ville, ["\nTu es venu ici pour affronter"
                                             " le Boss de Passione,\n"
                                             "pour renverser Diavolo et de"
-                                            "venir le Nosse, \ncelui"
+                                            "venir le Boss, \ncelui"
                                             " qui protège les innocents. \nDia"
                                             "volo est devenu fou,"
                                             " un tyran prêt à tout détruire. \nTo"
