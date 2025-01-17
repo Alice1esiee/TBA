@@ -149,7 +149,7 @@ class Game:
         #pnj weakness
         self.weakness_fight["Diavolo"] = fleuret
         self.weakness_fight["Doppio"] = pistolet
-        self.weakness_fight["Polnareff"] = pistolet #remettre arc
+        self.weakness_fight["Polnareff"] = arc 
 
     # Play the game
     def play(self):
@@ -171,7 +171,7 @@ class Game:
     def loss(self):
         if self.player.alive == False:
             self.finished = True
-            print("you lost... try again later") 
+            print("tu as perdu ... réessaie plus tard") 
     # Process the command entered by the player
     def process_command(self, command_string) -> None:
         self.win()
