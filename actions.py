@@ -292,7 +292,7 @@ class Actions:
         ennemy = "dont know yet"
         for nom, perso in game.player.current_room.characters.items():
             if list_of_words[1].upper() == nom.upper():
-                ennemy = list_of_words[1]
+                ennemy = nom
         if ennemy == "dont know yet":
             print(f"{list_of_words[1]} n'est pas dans la salle")
             return False 
@@ -307,7 +307,7 @@ class Actions:
             print(f"bravo, tu as gagné ton combat contre {ennemy}")
             return True
         else :
-            print(f"tu as perdu, tu n'a pas l'objet requis pour vaincre {ennemy}")
+            print(f"Vous avez perdu, vous n'avez pas l'objet requis pour vaincre {ennemy}")
             game.player.alive = False
             game.loss()
             return False
