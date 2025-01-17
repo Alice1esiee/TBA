@@ -127,12 +127,11 @@ class Game:
         self.player.current_room = aeroport
 
         #setup inventory
-        sword = Item("sword", "epee",4)
-        self.player.inventory["sword"]=sword
-        bow = Item("bow", "arc", 4)
-        self.player.inventory["bow"] = bow
-        shield = Item("shield", "bouclier", 4)
-        aeroport.inventory.add(shield)
+        fleuret = Item("Fleuret", "Fleuret élégant, idéal pour les duels.", 1)
+        port_naples.inventory["Fleuret"]=fleuret
+        pistolet = Item("Pistolet", "Pistolet fiable pour affronter vos adversaires.", 2)
+        centre_ville.inventory["Pistolet"] = pistolet
+
         #Setup player stat
         self.player.max_weight = 10
 
@@ -147,10 +146,10 @@ class Game:
                                               centre_ville, ["Je suis ton allie.",
                                                  "Je suis là pour t'aider.",
                                                 "Tu dois trouver le mystérieux fleuret pour vaincre le Boss de Passione."])
-
-        aeroport.characters["Gandalf"] = Character("Gandalf","sorcerer", aeroport, ["je suis Gandalf !","coucou","ca va"])
         #pnj weakness
-        self.weakness_fight["Gandalf"] = shield
+        self.weakness_fight["Diavolo"] = fleuret
+        self.weakness_fight["Doppio"] = pistolet
+
     # Play the game
     def play(self):
         self.setup()
