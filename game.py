@@ -28,13 +28,12 @@ class Game:
         self.player = None
         self.directions = None
         self.weakness_fight = {}
-    # Setup the game
-    def setup(self):
-        """
-        Sets up all the elements that player will need to play, sets up the environment
-        """
-        # Setup commands
 
+
+    def setup_command(self):
+        """
+        Setup the commands of the game
+        """
         help = Command("help", " : afficher cette aide", Actions.help, 0)
         self.commands["help"] = help
         quit = Command("quit", " : quitter le jeu", Actions.quit, 0)
@@ -55,12 +54,16 @@ class Game:
         self.commands["take"] = take
         drop = Command("drop", " : poser un objet de l'inventaire dans la pièce", Actions.drop,1)
         self.commands["drop"] = drop
-        self.talk = Command("talk", " : parler à un personnage", Actions.talk, 1)
-        self.commands["talk"] = self.talk
+        talk = Command("talk", " : parler à un personnage", Actions.talk, 1)
+        self.commands["talk"] = talk
         fight = Command("fight"," : engager un combat avec le PNJ/ennemi choisit", Actions.fight,1)
         self.commands["fight"] = fight
-        # Setup rooms
 
+
+    def setup_room(self):
+        """
+        Setup the rooms of the game
+        """
         aeroport = Room("Aéroport de Naples",
                         "Un lieu de passage, où l'agitation des voyageurs"\
                         " se mêle à l'ombre du Vésuve.")
@@ -132,7 +135,8 @@ class Game:
 
         self.directions = set(["N" , "NORD" , "E" , "EST" , "S" , "SUD" ,
         "O" , "OUEST" , "U" , "UP" , "D" , "DOWN" ])
-        # Setup player and starting room
+
+        #Setup player and starting room
 
         self.player = Player(input("\nEntrez votre nom: "))
         self.player.current_room = aeroport
@@ -185,7 +189,8 @@ class Game:
         """
         The main loop that allows the game to work
         """
-        self.setup()
+        self.setup_command()
+        self.setup_room()
         self.print_welcome()
         # Loop until the game is finished
         while not self.finished:
@@ -238,7 +243,7 @@ class Game:
         command_word = list_of_words[0]
 
         # If the command is not recognized, print an error message
-        if command_word not in self.commands.keys():
+        if command_word not in self.commands :
             #print(f"\nCommande '{command_word}' non reconnue.
             # Entrez 'help' pour voir la liste des commandes disponibles.\n")
             print('>')
