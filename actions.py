@@ -51,7 +51,9 @@ class Actions:
                     #faire comme en dessous
         
         for pnj in liste_pers:
-            if pnj is not None:
+            if pnj.name == "Diavolo": 
+                pass
+            elif pnj is not None:
                 pnj.move()
         #
         #pnj = game.player.current_room.characters.get("Gandalf", None)
@@ -77,7 +79,6 @@ class Actions:
         player.move(direction)
 
         
-        game.win()
         return True
 
     def quit(game, list_of_words, number_of_parameters):
@@ -286,20 +287,26 @@ class Actions:
             print(MSG0.format(command_word=command_word))
             return False
         
+        #est ce que le pnj est dans la salle
         ennemy = "dont know yet"
         for nom, perso in game.player.current_room.characters.items():
-            if list_of_words[1] == nom:
+            if list_of_words[1].upper() == nom.upper():
                 ennemy = list_of_words[1]
         if ennemy == "dont know yet":
             print(f"{list_of_words[1]} n'est pas dans la salle")
-            return False                
-        
+            return False 
+
+        # verif si le pnj est dans la salle et est vivant 
+        if game.player.current_room.characters[ennemy].alive == False :
+            print(f"{ennemy} est mort")
+            return True
+
         if game.weakness_fight[ennemy] in game.player.inventory.values():
-            del game.player.current_room.characters[ennemy]
-            print(f"congratulations, you won your fight against {ennemy}")
+            game.player.current_room.characters[ennemy].alive = False
+            print(f"bravo, tu as gagné ton combat contre {ennemy}")
             return True
         else :
-            print("you lost, you dont have the required item to win")
+            print(f"tu as perdu, tu n'a pas l'objet requis pour vaincre {ennemy}")
             game.player.alive = False
             game.loss()
             return False

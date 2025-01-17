@@ -84,5 +84,8 @@ class Room:
             for objet in self.inventory:
                     print("\t-", objet )
             for pnj in self.characters:
-                print("\t-", self.characters[pnj])
+                if self.characters[pnj].alive == False:
+                    print("\t-", self.characters[pnj].name,",", "mort")
+                else : 
+                    print("\t-", self.characters[pnj])
         return

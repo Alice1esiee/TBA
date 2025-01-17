@@ -1,4 +1,4 @@
 
 # Import modules
 
-DEBUG = False
+DEBUG = True

@@ -149,7 +149,7 @@ class Game:
         #pnj weakness
         self.weakness_fight["Diavolo"] = fleuret
         self.weakness_fight["Doppio"] = pistolet
-        self.weakness_fight["Polnareff"] = arc
+        self.weakness_fight["Polnareff"] = pistolet #remettre arc
 
     # Play the game
     def play(self):
@@ -162,16 +162,19 @@ class Game:
         return None
 
     def win(self):
-        if self.player.current_room.name == win_room:
+        for elem in self.rooms : 
+            if elem.name == "Etage Boss":
+                etage_boss = elem
+        if etage_boss.characters["Diavolo"].alive == False:
             self.finished = True
-            print("congratulations you beated the game")
+            print("bravo, tu as gagné")
     def loss(self):
         if self.player.alive == False:
             self.finished = True
             print("you lost... try again later") 
     # Process the command entered by the player
     def process_command(self, command_string) -> None:
-
+        self.win()
         # Split the command string into a list of words
         list_of_words = command_string.split(" ")
 

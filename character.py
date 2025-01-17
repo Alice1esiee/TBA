@@ -10,6 +10,7 @@ class Character:
         self.current_room = current_room
         self.msgs = msgs
         self.list_msgs = []
+        self.alive = True
 
     
     def __str__(self):
@@ -35,6 +36,9 @@ class Character:
                 print(f"{self.name} went to {self.current_room.name}\n")
     
     def get_msg(self):
+        if self.alive == False : 
+            print("...")
+            return
         if self.msgs:
             if not self.list_msgs:
                 for i in self.msgs:
