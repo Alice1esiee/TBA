@@ -7,7 +7,6 @@ from item import Item
 from character import Character
 from config import *
 
-win_room = "Port de Naples"
 class Game:
 
     # Constructor
@@ -82,13 +81,13 @@ class Game:
                             "la mer se mêle à l'odeur du poisson frais.") 
         self.rooms.append(port_naples)
         sous_sol = Room("Sous sol de l'église",
-                         "description")
+                         "Un sous-sol sombre et humide, avec des murs suintants et des reliques oubliées.")
         self.rooms.append(sous_sol)
         etage_un = Room("1er etage",
-                         "description")
+                         "Un étage lumineux avec des vitraux colorés et des bancs en bois usés.")
         self.rooms.append(etage_un)
         etage_boss = Room("Etage Boss",
-                           "description")
+                           "Une salle sombre et intimidante, dominée par un grand trône au fond.")
         self.rooms.append(etage_boss)
 
         # Create exits for rooms
@@ -142,16 +141,17 @@ class Game:
                                                    sous_sol, ["Tu ne peux pas me battre !",
                                                     "Tu ne toucheras pas au Boss.","Pars !"])
         tramway.characters["Polnareff"] =  Character("Polnareff", "Allie",
-                                            tramway, ["Tu es venu ici pour affronter le Boss de Passione,\n"
+                                            tramway, ["\nTu es venu ici pour affronter le Boss de Passione,\n"
                                             "pour renverser Diavolo et devenir le Nosse, \ncelui"
                                             " qui protège les innocents. \nDiavolo est devenu fou,"
                                             " un tyran prêt à tout détruire. \nToi, tu es différent."
                                             " Tu combats pour un idéal, pas pour le pouvoir. \n"
                                             "Si tu réussis, tu seras une légende. \nSi tu échoues... "
-                                            "que ton courage inspire les autres.",
+                                            "que ton courage inspire les autres.\n",
                                             "Je suis là pour t'aider.",
                                             "Tu dois trouver le mystérieux fleuret pour vaincre le Boss de Passione.",
-                                            "Tu trouveras un objet utile au port de Naples."])
+                                            "Tu trouveras un objet utile au port de Naples.",
+                                            "Tu veux réécouter les explications ?"])
         
         #pnj weakness
         self.weakness_fight["Diavolo"] = fleuret
@@ -174,11 +174,13 @@ class Game:
                 etage_boss = elem
         if etage_boss.characters["Diavolo"].alive == False:
             self.finished = True
-            print("bravo, tu as gagné")
+            print("Bravo, vous avez gagné !")
+
     def loss(self):
         if self.player.alive == False:
             self.finished = True
-            print("tu as perdu ... réessaie plus tard") 
+            print("Vous avez perdu ... réessayez plus tard.") 
+
     # Process the command entered by the player
     def process_command(self, command_string) -> None:
         self.win()
