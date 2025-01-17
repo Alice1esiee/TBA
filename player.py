@@ -1,5 +1,5 @@
 """
-class to modelise the player and its way to work its way around
+Module to modelise the player and its way to work its way around
 """
 class Player():
     """
@@ -68,12 +68,18 @@ class Player():
         if len(self.history) == 0:
             print("pas de pièce précédente \n")
             return
-        for i in range (len(self.history)):
-            print("\t- "+ self.history[i].description)
+        for elem in self.history:
+            print("\t- "+ elem.description)
         return
 
     def get_inventory(self):
-
+        """
+        Prints the room's inventory
+        Args 
+            self
+        Returns
+            nothing, all it does is showing the player its inventory
+        """
         if len(self.inventory)==0:
             print("Votre inventaire est vide.")
             return

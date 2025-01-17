@@ -1,6 +1,6 @@
 # Define the Character class.
 """
-pour avoir le choix aleatoire de mouvement de pnj
+Module to create characters 
 """
 import random
 from config import DEBUG

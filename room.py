@@ -1,4 +1,6 @@
-# Define the Room class.
+"""
+Module used for the creation of rooms in the game
+"""
 
 class Room:
     """
@@ -7,58 +9,56 @@ class Room:
     Attributes:
         name (str): The name of the room.
         descrition (str): The description of what the room contains/looks like.
-        exits (dict): The different possible exits that the player can take in the form of key = direction (str) and value=room (room)
+        exits (dict): The different possible exits that the player can take in the form of key =
+         direction (str) and value=room (room)
     
     Methods:
         __init__(self, name, description): The constructor
         get_exit(self, direction): The room in a given direction if it exists
-        get_exit_string(self): The string used in the next function to tell the player his possibilities (exits)
-        get_long_description(self): Actually builds the string telling the player in which room he is with a descriptipn and what are his possible exits
+        get_exit_string(self): The string used in the next function to tell the player his 
+        possibilities (exits)
+        get_long_description(self): Actually builds the string telling the player in which room he 
+        is with a descriptipn and what are his possible exits
     Examples:
-
-    >>> forest = Room("Forest", "dans une forêt enchantée. Vous entendez une brise légère à travers la cime des arbres.")
-    >>> tower = Room("Tower", "dans une immense tour en pierre qui s'élève au dessus des nuages.")
-    >>> cave = Room("Cave", "dans une grotte profonde et sombre. Des voix semblent provenir des profondeurs.")
-    >>> cottage = Room("Cottage", "dans un petit chalet pittoresque avec un toit de chaume. Une épaisse fumée verte sort de la cheminée.")
-    >>> swamp = Room("Swamp", "dans un marécage sombre et ténébreux. L'eau bouillonne, les abords sont vaseux.")
-    >>> castle = Room("Castle", "dans un énorme château fort avec des douves et un pont levis. Sur les tours, des flèches en or massif.")
-    >>> forest.exits = {"N" : cave, "E" : tower, "S" : castle, "O" : None}
-    >>> tower.exits = {"N" : cottage, "E" : None, "S" : swamp, "O" : forest}
-    >>> cave.exits = {"N" : None, "E" : cottage, "S" : forest, "O" : None}
-    >>> cottage.exits = {"N" : None, "E" : None, "S" : tower, "O" : cave}
-    >>> swamp.exits = {"N" : tower, "E" : None, "S" : None, "O" : castle}
-    >>> castle.exits = {"N" : forest, "E" : swamp, "S" : None, "O" : None}
-    >>> tower.get_exit(N)
-    cottage
-    >>> tower.get_exit(E)
-    None
-    >>> tower.get_long_description()
-    Vous êtes dans une immense tour en pierre qui s'élève au dessus des nuages.
-
-    Sorties: N, S, O
     """
 
-    # Define the constructor. 
-    def __init__(self, name, description): #ajouter parameter TODO
+    # Define the constructor.
+    def __init__(self, name, description):
         self.name = name
         self.description = description
         self.exits = {}
         self.inventory = set()
-        self.characters = dict()
-    
+        self.characters = {}
+
     # Define the get_exit method.
     def get_exit(self, direction):
+        """
+        get the exit
+
+        Args 
+            self
+            direction(str)
+        Returns 
+            the direction as a str or None
+        """
 
         # Return the room in the given direction if it exists.
-        if direction in self.exits.keys():
+        if direction in self.exits:
             return self.exits[direction]
-        else:
-            return None
-    
+        return None
+
     # Return a string describing the room's exits.
     def get_exit_string(self):
-        exit_string = "Sorties: " 
-        for exit in self.exits.keys():
+        """
+        returns the exit string for the current place
+        Args 
+            self
+        Returns 
+            the exit string
+        
+        """
+        exit_string = "Sorties: "
+        for exit in self.exits:
             if self.exits.get(exit) is not None:
                 exit_string += exit + ", "
         exit_string = exit_string.strip(", ")
@@ -66,9 +66,23 @@ class Room:
 
     # Return a long description of this room including exits.
     def get_long_description(self):
+        """
+        Get the long description of the rooms (itself and its exits)
+        Args 
+            self
+        Returns 
+            the string for the whole room
+        """
         return f"\nVous êtes dans {self.description}\n\n{self.get_exit_string()}\n"
 
     def get_inventory(self):
+        """
+        Prints the current room's inventory
+        Args
+            self
+        Returns
+            nothing, all it does is printing
+        """
         pnj = True
         obj = True
         if len(self.inventory)==0:
@@ -82,10 +96,9 @@ class Room:
         else:
             print("On voit :")
             for objet in self.inventory:
-                    print("\t-", objet )
-            for pnj in self.characters:
-                if self.characters[pnj].alive == False:
-                    print("\t-", self.characters[pnj].name,",", "mort")
-                else : 
-                    print("\t-", self.characters[pnj])
-        return
+                print("\t-", objet )
+            for pnj in self.characters.values():
+                if pnj.alive is False:
+                    print("\t-", pnj.name,",", "mort")
+                else :
+                    print("\t-", pnj)

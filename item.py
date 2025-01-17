@@ -1,5 +1,5 @@
 """
-item class for items in the game
+Item module for items in the game
 """
 
 class Item:
