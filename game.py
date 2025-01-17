@@ -159,8 +159,8 @@ class Game:
         sous_sol.characters["Doppio"] = Character("Doppio", "Sbire du Boss",
                                                    sous_sol, ["Tu ne peux pas me battre !",
                                                     "Tu ne toucheras pas au Boss.","Pars !"])
-        centre_ville.characters["Polnareff"] =  Character("Polnareff", "Allie",
-                                            centre_ville, ["\nTu es venu ici pour affronter"
+        tramway.characters["Polnareff"] =  Character("Polnareff", "Allie",
+                                            tramway, ["\nTu es venu ici pour affronter"
                                             " le Boss de Passione,\n"
                                             "pour renverser Diavolo et de"
                                             "venir le Boss, \ncelui"
@@ -212,7 +212,7 @@ class Game:
                 etage_boss = elem
         if etage_boss.characters["Diavolo"].alive is False:
             self.finished = True
-            print("Bravo, vous avez gagné !")
+            print("Félicitations ! Vous avez terminé le jeu !")
 
     def loss(self):
         """
@@ -224,7 +224,7 @@ class Game:
         """
         if self.player.alive is False:
             self.finished = True
-            print("Vous avez perdu ... réessayez plus tard.")
+            print("Le jeu est terminé, vous êtes mort... Réessayez.")
 
     # Process the command entered by the player
     def process_command(self, command_string) -> None:

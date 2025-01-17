@@ -395,15 +395,15 @@ class Actions:
 
         # verif si le pnj est dans la salle et est vivant
         if game.player.current_room.characters[ennemy].alive is False :
-            print(f"{ennemy} est mort")
+            print(f"{ennemy} est mort.")
             return True
 
         if game.weakness_fight[ennemy] in game.player.inventory.values():
             game.player.current_room.characters[ennemy].alive = False
-            print(f"bravo, tu as gagné ton combat contre {ennemy}")
+            print(f"Bravo, vous avez gagné votre combat contre {ennemy}.")
             game.win()
             return True
-        print(f"Vous avez perdu, vous n'avez pas l'objet requis pour vaincre {ennemy}")
+        print(f"Vous avez perdu, vous n'avez pas l'objet requis pour vaincre {ennemy}.")
         game.player.alive = False
         game.loss()
         return False
