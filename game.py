@@ -128,9 +128,9 @@ class Game:
 
         #setup inventory
         fleuret = Item("Fleuret", "Fleuret élégant, idéal pour les duels.", 1)
-        port_naples.inventory["Fleuret"]=fleuret
+        port_naples.inventory.add(fleuret)
         pistolet = Item("Pistolet", "Pistolet fiable pour affronter vos adversaires.", 2)
-        centre_ville.inventory["Pistolet"] = pistolet
+        centre_ville.inventory.add(pistolet)
 
         #Setup player stat
         self.player.max_weight = 10
