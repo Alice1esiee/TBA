@@ -142,7 +142,7 @@ class Game:
                                                    sous_sol, ["Tu ne peux pas me battre !",
                                                     "Tu ne toucheras pas au Boss.","Pars !"])
         centre_ville.characters["Polnareff"] = Character("Polnareff", "Allie",
-                                              centre_ville, ["Je suis ton allie.",
+                                              tramway, ["Je suis ton allie.",
                                                  "Je suis là pour t'aider.",
                                                 "Tu dois trouver le mystérieux fleuret pour vaincre le Boss de Passione.",
                                                 "Tu trouveras un objet utile au port de Naples."])
