@@ -51,7 +51,7 @@ class Actions:
                     #faire comme en dessous
         
         for pnj in liste_pers:
-            if pnj.name == "Diavolo": 
+            if pnj.name == "Diavolo" or pnj.name == "Polnareff": 
                 pass
             elif pnj is not None:
                 #pnj.move()

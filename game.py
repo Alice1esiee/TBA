@@ -141,11 +141,18 @@ class Game:
         sous_sol.characters["Doppio"] = Character("Doppio", "Sbire du Boss",
                                                    sous_sol, ["Tu ne peux pas me battre !",
                                                     "Tu ne toucheras pas au Boss.","Pars !"])
-        centre_ville.characters["Polnareff"] = Character("Polnareff", "Allie",
-                                              tramway, ["Je suis ton allie.",
-                                                 "Je suis là pour t'aider.",
-                                                "Tu dois trouver le mystérieux fleuret pour vaincre le Boss de Passione.",
-                                                "Tu trouveras un objet utile au port de Naples."])
+        tramway.characters["Polnareff"] =  Character("Polnareff", "Allie",
+                                            tramway, ["Tu es venu ici pour affronter le Boss de Passione,\n"
+                                            "pour renverser Diavolo et devenir le Nosse, \ncelui"
+                                            " qui protège les innocents. \nDiavolo est devenu fou,"
+                                            " un tyran prêt à tout détruire. \nToi, tu es différent."
+                                            " Tu combats pour un idéal, pas pour le pouvoir. \n"
+                                            "Si tu réussis, tu seras une légende. \nSi tu échoues... "
+                                            "que ton courage inspire les autres.",
+                                            "Je suis là pour t'aider.",
+                                            "Tu dois trouver le mystérieux fleuret pour vaincre le Boss de Passione.",
+                                            "Tu trouveras un objet utile au port de Naples."])
+        
         #pnj weakness
         self.weakness_fight["Diavolo"] = fleuret
         self.weakness_fight["Doppio"] = pistolet
