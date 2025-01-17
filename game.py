@@ -1,15 +1,12 @@
 # Description: Game class
-
-# Import modules
-
 from room import Room
 from player import Player
 from command import Command
 from actions import Actions
 from item import Item
 from character import Character
+from config import *
 
-DEBUG = True
 win_room = "Port de Naples"
 class Game:
 
@@ -33,22 +30,22 @@ class Game:
         go = Command("go", " <direction> : se déplacer dans une direction cardinale (N, E, S, O)",
                       Actions.go, 1)
         self.commands["go"] = go
-        history = Command("history"," : aficher l'historique des pièces visitées",
+        history = Command("history"," : afficher l'historique des pièces visitées",
                            Actions.history, 0)
         self.commands["history"] = history
         back = Command("back"," : retourner à la pièce précédente", Actions.back, 0)
         self.commands["back"] = back
         check = Command("check"," : afficher l'inventaire", Actions.check, 0)
         self.commands["check"] = check
-        look = Command("look", ": voir les items dans la pièce", Actions.look, 0)
+        look = Command("look", " : voir les items présent dans la pièce", Actions.look, 0)
         self.commands["look"] = look
-        take = Command("take","prendre un objet de la pièce", Actions.take, 1)
+        take = Command("take"," : prendre un objet présent dans la pièce", Actions.take, 1)
         self.commands["take"] = take
-        drop = Command("drop", "poser un objet de l'inventaire dans la pièce", Actions.drop,1)
+        drop = Command("drop", " : poser un objet de l'inventaire dans la pièce", Actions.drop,1)
         self.commands["drop"] = drop
-        self.talk = Command("talk", "parler à un personnage", Actions.talk, 1)
+        self.talk = Command("talk", " : parler à un personnage", Actions.talk, 1)
         self.commands["talk"] = self.talk
-        fight = Command("fight"," engager un combat avec le PNJ/ennemi choisit", Actions.fight , 1)
+        fight = Command("fight"," : engager un combat avec le PNJ/ennemi choisit", Actions.fight , 1)
         self.commands["fight"] = fight
         # Setup rooms
 
@@ -131,6 +128,8 @@ class Game:
         port_naples.inventory.add(fleuret)
         pistolet = Item("Pistolet", "Pistolet fiable pour affronter vos adversaires.", 2)
         centre_ville.inventory.add(pistolet)
+        arc = Item("Arc", "Arc puissant pour tirer des flèches.", 3)
+        eglise_abandonnee.inventory.add(arc)
 
         #Setup player stat
         self.player.max_weight = 10
@@ -145,10 +144,12 @@ class Game:
         centre_ville.characters["Polnareff"] = Character("Polnareff", "Allie",
                                               centre_ville, ["Je suis ton allie.",
                                                  "Je suis là pour t'aider.",
-                                                "Tu dois trouver le mystérieux fleuret pour vaincre le Boss de Passione."])
+                                                "Tu dois trouver le mystérieux fleuret pour vaincre le Boss de Passione.",
+                                                "Tu trouveras un objet utile au port de Naples."])
         #pnj weakness
         self.weakness_fight["Diavolo"] = fleuret
         self.weakness_fight["Doppio"] = pistolet
+        self.weakness_fight["Polnareff"] = arc
 
     # Play the game
     def play(self):

@@ -42,7 +42,7 @@ class Player():
         self.history.append(self.current_room)
         self.current_room = next_room
         print(self.current_room.get_long_description())
-        self.get_history()
+        #self.get_history()
         return True
 
     def get_history(self):

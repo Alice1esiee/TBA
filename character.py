@@ -1,5 +1,6 @@
 # Define the Character class.
 import random
+from config import *
 
 class Character:
     
@@ -15,7 +16,6 @@ class Character:
         return self.name + " : " + self.description
         
     def move(self):
-        from game import DEBUG
         l=["move", "stay"]
         condition = random.choice(l)
         if DEBUG:
