@@ -405,5 +405,5 @@ class Actions:
             return True
         print(f"Vous avez perdu, vous n'avez pas l'objet requis pour vaincre {ennemy}.")
         game.player.alive = False
-        game.loss()
+        game.lose()
         return False

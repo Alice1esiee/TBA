@@ -62,7 +62,7 @@ class Game:
 
     def setup_room(self):
         """
-        Setup the rooms of the game
+        Setup the rooms and the pnj of the game
         """
         aeroport = Room("Aéroport de Naples",
                         "Un lieu de passage, où l'agitation des voyageurs"\
@@ -212,9 +212,9 @@ class Game:
                 etage_boss = elem
         if etage_boss.characters["Diavolo"].alive is False:
             self.finished = True
-            print("Félicitations ! Vous avez terminé le jeu !")
+            print("Félicitations ! Vous avez battu le Boss de Passione ! Vous avez terminé le jeu !")
 
-    def loss(self):
+    def lose(self):
         """
         Determines if the player lost
         Args
