@@ -19,10 +19,10 @@ Il y a 7 modules contenant chacun une classe.
 - `character` / `Character` : les personnages non joueur ;
 - `item` / `Item` : les objets du jeu
 
-##Comment exécuter le programme :
+## Comment exécuter le programme :
 
 Pour l'exécuter, il faut d'abord ouvrir un terminal, ensuite, exécutez la commande "python game.py" pour pouvoir jouer au jeu.
 
-##Ce qui marche/ce qui marche pas:
+## Ce qui marche/ce qui marche pas:
 
 L'ensemble des fonctions qui devaient être réalisées pour ce projet fonctionne correctement. 
