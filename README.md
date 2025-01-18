@@ -31,7 +31,8 @@ L'ensemble des fonctions qui devaient être réalisées pour ce projet fonctionn
 
 # Vidéo de démonstration
 
-<video src="video_de_demonstration.mp4" controls width="640">
+<video width="740" height="480" controls>
+  <source src="video_de_demonstration" type="video/mp4">
 </video>
 
 
