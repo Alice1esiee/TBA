@@ -28,11 +28,3 @@ Pour l'exécuter, il faut d'abord ouvrir un terminal, ensuite, exécutez la comm
 ## Ce qui marche/ce qui marche pas :
 
 L'ensemble des fonctions qui devaient être réalisées pour ce projet fonctionne correctement. 
-
-# Vidéo de démonstration
-
-<video width="740" height="480" controls>
-  <source src="video_de_demonstration" type="video/mp4">
-</video>
-
-
