@@ -161,18 +161,18 @@ class Game:
                                                     "Tu ne toucheras pas au Boss.","Pars !"])
         tramway.characters["Polnareff"] =  Character("Polnareff", "Allie",
                                             tramway, ["\nTu es venu ici pour affronter"
-                                            " le Boss de Passione,\n"
-                                            "pour renverser Diavolo et de"
-                                            "venir le Boss, \ncelui"
+                                            " le Boss de Passione,"
+                                            " pour renverser Diavolo et de"
+                                            "venir le Boss, celui"
                                             " qui protège les innocents. \nDia"
                                             "volo est devenu fou,"
-                                            " un tyran prêt à tout détruire. \nTo"
+                                            " un tyran prêt à tout détruire. To"
                                             "i, tu es différent."
-                                            " Tu combats pour un idéal, pas pour l"
-                                            "e pouvoir. \n"
-                                            "Si tu réussis, tu seras une légende. \nS"
+                                            "Tu combats pour un idéal, pas pour l"
+                                            "e pouvoir. "
+                                            "\nSi tu réussis, tu seras une légende. S"
                                             "i tu échoues... "
-                                            "que ton courage inspire les autres.\n",
+                                            "que ton courage inspire les autres.",
                                             "Je suis là pour t'aider.",
                                             "Tu dois trouver le mystérieux fleuret pour v"
                                             "aincre le Boss de Passione.",
