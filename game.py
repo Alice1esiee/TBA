@@ -213,7 +213,7 @@ class Game:
         if etage_boss.characters["Diavolo"].alive is False:
             self.finished = True
             print("Félicitations ! Vous avez battu le Boss de Passione !"
-                  "Vous avez terminé le jeu !")
+                  " Vous avez terminé le jeu !")
 
     def lose(self):
         """
