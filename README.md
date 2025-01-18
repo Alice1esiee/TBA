@@ -29,6 +29,6 @@ Pour l'exécuter, il faut d'abord ouvrir un terminal, ensuite, exécutez la comm
 
 L'ensemble des fonctions qui devaient être réalisées pour ce projet fonctionne correctement. 
 
-<video width="740" height="480" controls>
-  <source src="Vidéo de démonstration.mp4">
-</video>
+# Vidéo de démonstration
+[Voir la vidéo](Vidéo_de_démonstration.mp4)
+
